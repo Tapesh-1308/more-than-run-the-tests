@@ -2,6 +2,7 @@ import Editor from "@monaco-editor/react";
 import Button from "./Button";
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "../context/AppContext";
+import { BASE_URL } from "../utils/constants";
 const CodeEditor = ({setIsEditorLoaded}) => {
 	const {
 		challengeId,
@@ -34,7 +35,7 @@ const CodeEditor = ({setIsEditorLoaded}) => {
 
 	const validateHTML = () => {
 		setIsRunningTests(true);
-		fetch(`/api/validate-html-css-js/${challengeId}`, {
+		fetch(`${BASE_URL}/api/validate-html-css-js/${challengeId}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': 'https://more-than-run-the-tests-api.onrender.com',
+      '/api': '',
     },
   },
   plugins: [react()],

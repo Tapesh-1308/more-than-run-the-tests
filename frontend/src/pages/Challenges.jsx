@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChallengeCard } from "../components";
+import { BASE_URL } from "../utils/constants";
 
 const Challenges = () => {
 	const [challenges, setChallenges] = useState([]);
@@ -8,7 +9,7 @@ const Challenges = () => {
 	const getAllChallenges = async () => {
 		setIsChallengesLoading(true);
 		try {
-			const response = await fetch("/api/getAllChallenges");
+			const response = await fetch(`${BASE_URL}/api/getAllChallenges`);
 			const data = await response.json();
 			setChallenges(data.data);
 		} catch (error) {

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "../context/AppContext";
+import { BASE_URL } from "../utils/constants";
 
 const ChallengeInfo = ({setIsInfoLoaded}) => {
 	const { challengeId, feedback, isRunningTests } =
@@ -9,7 +10,7 @@ const ChallengeInfo = ({setIsInfoLoaded}) => {
 
 	const getChallengeById = async (challengeId) => {
 		try {
-			const response = await fetch(`/api/getChallengeById/${challengeId}`);
+			const response = await fetch(`${BASE_URL}/api/getChallengeById/${challengeId}`);
 			const data = await response.json();
 			setChallengeData(data?.data);
 		} catch (error) {
@@ -19,11 +20,11 @@ const ChallengeInfo = ({setIsInfoLoaded}) => {
 
 	const getTestCasesByChallengeId = async (challengeId) => {
 		try {
-			const response = await fetch(`/api/${challengeId}/testCases`);
+			const response = await fetch(`${BASE_URL}/api/${challengeId}/testCases`);
 			const data = await response.json();
 			setTestCases(data.data);
 		} catch (error) {
-			console.error("Error:", error);
+			console.error("Error: getChallengesById");
 		} finally {
 			setIsInfoLoaded(true);
 		}
